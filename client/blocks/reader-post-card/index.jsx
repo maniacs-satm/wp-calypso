@@ -86,6 +86,7 @@ export default class RefreshPostCard extends React.Component {
 	render() {
 		const { post, site, feed, onCommentClick, showPrimaryFollowButton } = this.props;
 		const isPhotoOnly = post.display_type & DisplayTypes.PHOTO_ONLY;
+		const isGallery = post.display_type & DisplayTypes.GALLERY;
 		const title = truncate( post.title, {
 			length: 140,
 			separator: /,? +/
@@ -95,7 +96,9 @@ export default class RefreshPostCard extends React.Component {
 		const classes = classnames( 'reader-post-card', {
 			'has-thumbnail': !! featuredAsset,
 			'is-photo': isPhotoOnly
+			'is-gallery': isGallery
 		} );
+		const showExcerpt = ! isPhotoOnly && ! isGallery;
 
 		let followUrl;
 		if ( showPrimaryFollowButton ) {
@@ -112,7 +115,7 @@ export default class RefreshPostCard extends React.Component {
 						<h1 className="reader-post-card__title">
 							<a className="reader-post-card__title-link" href={ post.URL }>{ title }</a>
 						</h1>
-						{ ! isPhotoOnly && <div className="reader-post-card__excerpt">{ post.short_excerpt }</div> }
+						{ showExcerpt && <div className="reader-post-card__excerpt">{ post.short_excerpt }</div> }
 						{ post &&
 							<ReaderPostActions
 								post={ post }
