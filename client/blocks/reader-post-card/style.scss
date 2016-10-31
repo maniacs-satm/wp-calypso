@@ -371,11 +371,28 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 	transition: opacity .25s;
 }
 
+// Gallery cards
+.reader-post-card__gallery {
+	display: flex;
+	margin: 0 0 20px;
+	padding: 0;
+	width: 100%;
+}
+
 .reader-post-card__gallery-item {
+	background: #eee; // ### Temp background for gallery images
+	height: 130px;
 	list-style-type: none;
-	width: 24%;
 	margin-right: 1px;
-	float: left;
+	width: 25%;
+
+	@include breakpoint( "<480px" ) {
+		width: 50%;
+
+		&:nth-last-of-type(-n+2) {
+			display: none;
+		}
+	}
 }
 
 // For these borderless cards to look more presentable on Devdocs

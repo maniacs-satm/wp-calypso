@@ -17,7 +17,8 @@ class PostGallery extends React.Component {
 		const listItems = map( imagesToDisplay, ( image, index ) => {
 			const imageStyle = {
 				backgroundImage: 'url(' + image.src + ')',
-				backgroundSize: '25%',
+				backgroundSize: 'cover',
+				backgroundPosition: '50% 50%',
 				backgroundRepeat: 'no-repeat'
 			};
 			return (
