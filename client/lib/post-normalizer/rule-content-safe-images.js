@@ -138,8 +138,7 @@ export default function( maxWidth ) {
 					src: safeSource,
 					original_src: imgSource,
 					width: image.width,
-					height: image.height,
-					alt: image.alt ? image.alt : null
+					height: image.height
 				} );
 			}
 		} );
