@@ -98,7 +98,7 @@ export default class RefreshPostCard extends React.Component {
 			'is-photo': isPhotoOnly,
 			'is-gallery': isGallery
 		} );
-		const showExcerpt = ! isPhotoOnly && ! isGallery;
+		const showExcerpt = ! isPhotoOnly;
 
 		let followUrl;
 		if ( showPrimaryFollowButton ) {
@@ -110,7 +110,7 @@ export default class RefreshPostCard extends React.Component {
 				<PostByline post={ post } site={ site } feed={ feed } />
 				{ showPrimaryFollowButton && <FollowButton siteUrl={ followUrl } /> }
 				<div className="reader-post-card__post">
-					{ featuredAsset }
+					{ ! isGallery && featuredAsset }
 					{ isGallery && <PostGallery post={ post } /> }
 					<div className="reader-post-card__post-details">
 						<h1 className="reader-post-card__title">

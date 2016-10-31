@@ -4,8 +4,6 @@
 import React from 'react';
 import { map, take } from 'lodash';
 
-var debug = require( 'debug' )( 'calypso:reader:post-gallery' );
-
 class PostGallery extends React.Component {
 
 	static propTypes = {
@@ -14,14 +12,17 @@ class PostGallery extends React.Component {
 
 	render() {
 		const post = this.props.post;
-		debug( post );
 		const numberOfImagesToDisplay = 4;
 		const imagesToDisplay = take( post.content_images, numberOfImagesToDisplay );
 		const listItems = map( imagesToDisplay, ( image, index ) => {
-			debug( 'image alt on ' + image.src + ' is ' + image.alt );
+			const imageStyle = {
+				backgroundImage: 'url(' + image.src + ')',
+				backgroundSize: '25%',
+				backgroundRepeat: 'no-repeat'
+			};
 			return (
 				<li key={ `post-${ post.ID }-image-${ index }` } className="reader-post-card__gallery-item">
-					<img alt={ image.alt } src={ image.src } />
+					<div className="reader-post-card__gallery-image" style={ imageStyle }></div>
 				</li>
 			);
 		} );
