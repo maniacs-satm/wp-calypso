@@ -4,12 +4,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import page from 'page';
+import { translate } from 'i18n-calypso';
 
 /**
  * Internal dependencies
  */
 import Dialog from 'components/dialog';
-import PulsingDot from 'components/pulsing-dot';
 import { getDetailsUrl, getCustomizeUrl, getForumUrl, trackClick } from './helpers';
 import {
 	isActivating,
@@ -170,7 +170,7 @@ const ThanksModal = React.createClass( {
 	renderLoading() {
 		return (
 			<div>
-				<PulsingDot active={ true } />
+				{ translate( 'Switching to your new theme.' ) }
 			</div>
 		);
 	},
