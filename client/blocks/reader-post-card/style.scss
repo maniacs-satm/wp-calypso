@@ -9,15 +9,11 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 .reader-post-card.card {
 	border-bottom: 1px solid lighten( $gray, 30% );
 	box-shadow: none;
-	margin: 10px;
-	padding: 20px 10px;
+	margin: 0 15px;
+	padding: 20px 0 20px;
 
 	@include breakpoint( ">660px" ) {
-		padding: 20px 0;
-	}
-
-	@media #{$reader-post-card-breakpoint-xlarge}  {
-		margin: 0 15px;
+		margin: 0;
 		padding: 20px 0;
 	}
 
@@ -104,16 +100,11 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 			}
 		}
 	}
-
-	&.is-gallery .reader-post-card__post {
-		flex-direction: column;
-	}
 }
 
 .reader-post-card__byline {
 	display: flex;
 	font-size: 13px;
-	margin: -4px 0 15px;
 }
 
 .reader-post-card__author::after {
@@ -194,6 +185,7 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 }
 
 .reader-post-card__post {
+	clear: both;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -248,6 +240,7 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 // Action buttons in post card
 .reader-post-card.card .reader-post-actions__item {
 	font-size: 14px;
+	height: 22px;
 
 	&.reader-post-actions__visit .gridicon {
 		fill: lighten( $gray, 10% );
@@ -291,6 +284,42 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 
 		@include breakpoint( "<660px" ) {
 			display: none;
+		}
+	}
+
+	.ellipsis-menu .button.is-borderless .gridicon {
+		top: -2px;
+	}
+}
+
+// Follow button for stream cards
+.reader-post-card.card .follow-button {
+	border: 0;
+	float: right;
+	padding: 0;
+	position: relative;
+		top: -42px;
+
+	@include breakpoint( "<660px" ) {
+		left: 5px;
+	}
+
+	.gridicon {
+		fill: $blue-medium;
+	}
+
+	.follow-button__label {
+		color: $blue-medium;
+	}
+
+	&.is-following {
+
+		.gridicon {
+			fill: $alert-green;
+		}
+
+		.follow-button__label {
+			color: $alert-green;
 		}
 	}
 }
@@ -356,16 +385,16 @@ $reader-post-card-breakpoint-small: "( max-width: 550px )";
 	list-style-type: none;
 	margin-right: 1px;
 
-	&:last-child {
+	@media #{$reader-post-card-breakpoint-medium} {
 
-		@media #{$reader-post-card-breakpoint-medium} {
+		&:last-child {
 			display: none;
 		}
 	}
 
-	&:nth-child(-n+2) {
+	@include breakpoint( "<480px" ) {
 
-		@include breakpoint( "<480px" ) {
+		&:nth-last-of-type(-n+2) {
 			display: none;
 		}
 	}
